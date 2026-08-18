@@ -9,6 +9,29 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  .logo-marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    position: relative;
+    padding: 1rem 0;
+  }
+  .logo-track {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: max-content;
+    animation: scrollLogos 25s linear infinite;
+  }
+  .logo-marquee:hover .logo-track {
+    animation-play-state: paused;
+  }
+  @keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
 </head>
 <body>
 
@@ -45,16 +68,37 @@
       <span class="chip-wrap chip-wrap--right">
         Innovate, Build,
         <span class="icon-chip icon-chip--1" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          <svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="22.7931" width="67" height="67" rx="10.4078" transform="rotate(19.8888 22.7931 0)" fill="#B8F3D9"/>
+            <rect x="23.5489" y="1.61272" width="64.4812" height="64.4812" rx="9.14837" transform="rotate(19.8888 23.5489 1.61272)" stroke="#93ECC5" stroke-opacity="0.8" stroke-width="2.5188"/>
+            <path d="M28.1639 31.603C30.2567 32.3601 32.567 31.2773 33.3241 29.1845C34.0812 27.0917 32.9984 24.7814 30.9056 24.0243C28.8129 23.2672 26.5026 24.35 25.7454 26.4428C24.9883 28.5356 26.0711 30.8459 28.1639 31.603Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M62.2679 43.9409C64.3607 44.698 66.671 43.6152 67.4281 41.5224C68.1852 39.4296 67.1024 37.1193 65.0096 36.3622C62.9169 35.6051 60.6066 36.6879 59.8494 38.7807C59.0923 40.8734 60.1751 43.1837 62.2679 43.9409Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M59.8495 38.7807L52.2709 36.0389" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M40.9027 31.9263L33.3241 29.1845" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M31.5493 48.8974L30.1784 52.6867C29.7603 53.8425 28.696 54.593 27.56 54.6534C27.1383 54.6937 26.7251 54.6513 26.3082 54.5006L22.5189 53.1297C20.9463 52.5608 20.1362 50.8321 20.7051 49.2595L22.076 45.4702C22.6449 43.8976 24.3735 43.0874 25.9461 43.6564L29.7354 45.0272C31.308 45.5962 32.1182 47.3248 31.5493 48.8974Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M58.0744 58.4935L56.7035 62.2828C56.1346 63.8554 54.406 64.6656 52.8334 64.0967L49.0441 62.7258C48.6272 62.575 48.2826 62.3432 47.9843 62.0424C47.1499 61.2692 46.8121 60.0114 47.2302 58.8557L48.6011 55.0663C49.17 53.4938 50.8987 52.6836 52.4713 53.2525L56.2606 54.6234C57.8331 55.1923 58.6433 56.9209 58.0744 58.4935Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M53.2989 33.1969L51.2426 38.8809C50.6805 40.4345 48.9261 41.2568 47.3724 40.6947L41.6885 38.6384C40.1348 38.0764 39.3126 36.3219 39.8746 34.7683L41.9309 29.0843C42.493 27.5306 44.2475 26.7084 45.8011 27.2704L51.4851 29.3268C53.0387 29.8888 53.861 31.6433 53.2989 33.1969Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M51.7704 37.4219C55.4382 41.32 56.7581 47.3256 54.7086 52.9906C54.5921 53.3127 54.4634 53.609 54.309 53.9174" fill="#B8F3D9"/>
+            <path d="M51.7704 37.4219C55.4382 41.32 56.7581 47.3256 54.7086 52.9906C54.5921 53.3127 54.4634 53.609 54.309 53.9174" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M27.8975 44.3624C27.9762 44.0266 28.0669 43.7166 28.1834 43.3945C30.2329 37.7294 35.0896 33.9584 40.4025 33.3093" fill="#B8F3D9"/>
+            <path d="M27.8975 44.3624C27.9762 44.0266 28.0669 43.7166 28.1834 43.3945C30.2329 37.7294 35.0896 33.9584 40.4025 33.3093" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
       </span>
       <br>
       <span class="chip-wrap chip-wrap--left">
         <span class="icon-chip icon-chip--2" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          <svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="22.7944" y="1.37091e-06" width="67" height="67" rx="10.4078" transform="rotate(19.89 22.7944 1.37091e-06)" fill="#B8F3D9"/>
+            <rect x="23.5502" y="1.61274" width="64.4812" height="64.4812" rx="9.14837" transform="rotate(19.89 23.5502 1.61274)" stroke="#93ECC5" stroke-opacity="0.8" stroke-width="2.5188"/>
+            <path d="M47.8973 22.5071L52.6721 24.2346C54.4911 24.8927 55.1998 26.6063 54.2897 28.0555L52.2721 31.204L43.7455 28.119L44.2094 24.4085C44.403 22.8072 46.1919 21.8901 47.8973 22.5071Z" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M52.2653 31.2229L54.4876 35.3269C55.736 37.6214 55.4004 38.7858 53.2764 40.0959L44.8443 45.3378C43.0764 46.4338 41.0868 45.714 40.4294 43.7405L37.3033 34.3169C36.5093 31.9511 36.9412 30.7572 39.4239 29.8769L43.7577 28.1448" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M42.4834 44.9337L44.2178 40.1398" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M36.7889 55.5803L34.7762 56.5235C33.5634 57.0919 33.0425 58.5319 33.6108 59.7446L34.554 61.7573C35.1224 62.9701 36.5624 63.4911 37.7752 62.9227L39.7878 61.9795C41.0006 61.4111 41.5216 59.9711 40.9532 58.7584L40.01 56.7457C39.4417 55.5329 38.0016 55.0119 36.7889 55.5803Z" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M55.6827 52.5163L57.767 53.2704C59.0176 53.7228 60.4109 53.0698 60.8634 51.8192L61.6175 49.735C62.0699 48.4844 61.417 47.0909 60.1664 46.6385L58.0821 45.8844C56.8315 45.4319 55.4381 46.0851 54.9857 47.3356L54.2316 49.4199C53.7791 50.6704 54.4321 52.0638 55.6827 52.5163Z" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M27.4501 42.3018L25.3658 41.5477C24.1152 41.0953 23.4622 39.7019 23.9147 38.4513L24.6688 36.3671C25.1212 35.1165 26.5146 34.4634 27.7652 34.9158L29.8495 35.6699C31.1001 36.1224 31.753 37.5159 31.3006 38.7664L30.5465 40.8507C30.094 42.1012 28.7007 42.7543 27.4501 42.3018Z" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M54.1572 51.343L40.4814 57.7521" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M29.3733 42.3762L35.7824 56.052" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
         Scale.
@@ -72,39 +116,77 @@
 <!-- ================= TRUST BAND + STATS ================= -->
 <section class="trust">
   <div class="container">
-    <div class="logo-row">
-      <div class="brand-logo brand-logo--furnitures">
-        <span class="furn-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 14" fill="none"><path d="M2 2h28M2 2v10M30 2v10" stroke="currentColor" stroke-width="2"/></svg>
-        </span>
-        <span class="brand-logo-text">MIGHTY<br>FURNITURES</span>
-      </div>
+    <div class="logo-marquee">
+      <div class="logo-track">
+        <!-- First Set -->
+        <div class="brand-logo brand-logo--furnitures">
+          <span class="furn-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 14" fill="none"><path d="M2 2h28M2 2v10M30 2v10" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <span class="brand-logo-text">MIGHTY<br>FURNITURES</span>
+        </div>
 
-      <div class="brand-logo brand-logo--boxed">
-        <span class="brand-logo-text">WALL<br>PAINT<br>SHOP</span>
-      </div>
+        <div class="brand-logo brand-logo--boxed">
+          <span class="brand-logo-text">WALL<br>PAINT<br>SHOP</span>
+        </div>
 
-      <div class="brand-logo brand-logo--bullseye">
-        <span class="bullseye-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2.4"/><circle cx="16" cy="16" r="3" fill="currentColor"/></svg>
-        </span>
-        <span class="brand-logo-text">BULLSEYE</span>
-      </div>
+        <div class="brand-logo brand-logo--bullseye">
+          <span class="bullseye-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2.4"/><circle cx="16" cy="16" r="3" fill="currentColor"/></svg>
+          </span>
+          <span class="brand-logo-text">BULLSEYE</span>
+        </div>
 
-      <div class="brand-logo brand-logo--golden">
-        <span class="brand-logo-text brand-logo-text--flip">GOLDEN<br>GOLDEN</span>
-      </div>
+        <div class="brand-logo brand-logo--golden">
+          <span class="brand-logo-text brand-logo-text--flip">GOLDEN<br>GOLDEN</span>
+        </div>
 
-      <div class="brand-logo brand-logo--ideabox">
-        <span class="ideabox-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" stroke="currentColor" stroke-width="2"/><path d="M2 30L30 2" stroke="currentColor" stroke-width="2"/></svg>
-        </span>
-        <span class="brand-logo-text">Ideabox.</span>
-      </div>
+        <div class="brand-logo brand-logo--ideabox">
+          <span class="ideabox-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" stroke="currentColor" stroke-width="2"/><path d="M2 30L30 2" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <span class="brand-logo-text">Ideabox.</span>
+        </div>
 
-      <div class="brand-logo brand-logo--ctm">
-        <span class="ctm-badge">ctm</span>
-        <span class="brand-logo-text">CLIMB<br>THE<br>MOUNTAIN</span>
+        <div class="brand-logo brand-logo--ctm">
+          <span class="ctm-badge">ctm</span>
+          <span class="brand-logo-text">CLIMB<br>THE<br>MOUNTAIN</span>
+        </div>
+
+        <!-- Duplicate Set for Infinite Marquee Loop -->
+        <div class="brand-logo brand-logo--furnitures" aria-hidden="true">
+          <span class="furn-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 14" fill="none"><path d="M2 2h28M2 2v10M30 2v10" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <span class="brand-logo-text">MIGHTY<br>FURNITURES</span>
+        </div>
+
+        <div class="brand-logo brand-logo--boxed" aria-hidden="true">
+          <span class="brand-logo-text">WALL<br>PAINT<br>SHOP</span>
+        </div>
+
+        <div class="brand-logo brand-logo--bullseye" aria-hidden="true">
+          <span class="bullseye-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2.4"/><circle cx="16" cy="16" r="3" fill="currentColor"/></svg>
+          </span>
+          <span class="brand-logo-text">BULLSEYE</span>
+        </div>
+
+        <div class="brand-logo brand-logo--golden" aria-hidden="true">
+          <span class="brand-logo-text brand-logo-text--flip">GOLDEN<br>GOLDEN</span>
+        </div>
+
+        <div class="brand-logo brand-logo--ideabox" aria-hidden="true">
+          <span class="ideabox-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" stroke="currentColor" stroke-width="2"/><path d="M2 30L30 2" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <span class="brand-logo-text">Ideabox.</span>
+        </div>
+
+        <div class="brand-logo brand-logo--ctm" aria-hidden="true">
+          <span class="ctm-badge">ctm</span>
+          <span class="brand-logo-text">CLIMB<br>THE<br>MOUNTAIN</span>
+        </div>
       </div>
     </div>
 
@@ -151,7 +233,7 @@
           <img src="assets/web-design.jpg" alt="Web design and development preview" />
         </div>
         <div class="expertise-foot">
-          <h3>Web design and<br>development</h3>
+          <h3>Web design and development</h3>
           <span class="arrow-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </article>
@@ -161,7 +243,7 @@
           <img src="assets/app-design.jpg" alt="App design and development preview" />
         </div>
         <div class="expertise-foot">
-          <h3>App design and<br>development</h3>
+          <h3>App design and development</h3>
           <span class="arrow-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </article>
@@ -181,7 +263,7 @@
           <img src="assets/branding.jpg" alt="Branding and creative service preview" />
         </div>
         <div class="expertise-foot">
-          <h3>Branding and<br>creative service</h3>
+          <h3>Branding and creative service</h3>
           <span class="arrow-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </article>
@@ -280,6 +362,7 @@
     </div>
 
     <nav class="footer-col">
+      <strong>Home</strong>
       <a href="#">Home</a>
       <a href="javascript:void(0)">Agency</a>
       <a href="javascript:void(0)">Team</a>
@@ -289,7 +372,7 @@
     </nav>
 
     <nav class="footer-col">
-      <a href="#services">Services</a>
+      <strong>Services</strong>
       <a href="#services">Web Design &amp; Development</a>
       <a href="#services">Branding &amp; Creative Services</a>
       <a href="#services">Digital Marketing</a>
