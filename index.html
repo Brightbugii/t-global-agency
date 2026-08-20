@@ -4,26 +4,771 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TGlobal — Innovate, Build, Scale</title>
+<meta name="description" content="TGlobal provides tailored digital solutions, from web design to SEO and marketing, blending creativity with data-driven insights." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  :root {
+    --container-w: 1280px;
+    --font-display: 'Manrope', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+    --green: #1CA167;
+    --green-hover: #168654;
+    --mint-bg: #EAF8F2;
+    --dark-bg: #091E15;
+    --ink: #0D281E;
+    --white: #ffffff;
+    --radius-pill: 9999px;
+    --radius-card: 20px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--mint-bg);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button {
+    font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .container {
+    width: 100%;
+    max-width: var(--container-w);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
+  }
+
+  /* ============ BUTTONS ============ */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 13px 26px;
+    border-radius: var(--radius-pill);
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    white-space: nowrap;
+  }
+
+  .btn--primary {
+    background: var(--green);
+    color: var(--white);
+  }
+
+  .btn--primary:hover {
+    background: var(--green-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(28, 161, 103, 0.25);
+  }
+
+  .btn--lg {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  /* ============ HEADER & NAV ============ */
+  .hero {
+    position: relative;
+    background: var(--mint-bg);
+    padding-bottom: 80px;
+    overflow: hidden;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Logo: Enlarged & Container Removed */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 38px;
+    height: 38px;
+    background: var(--green);
+    border-radius: 10px;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .logo-mark--lg {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+
+  .logo-text {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+  }
+
+  .nav-pills {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 6px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(28, 161, 103, 0.15);
+  }
+
+  .pill {
+    display: block;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    border-radius: var(--radius-pill);
+    transition: all 0.2s ease;
+  }
+
+  .pill:hover, .pill--active {
+    background: var(--white);
+    color: var(--green);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    color: var(--ink);
+  }
+
+  .nav-toggle svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Hero Content */
+  .hero-content {
+    text-align: center;
+    padding-top: 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+  }
+
+  .hero-title {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .chip-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .icon-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+  }
+
+  .icon-chip svg {
+    width: 64px;
+    height: 64px;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(13, 40, 30, 0.8);
+    max-width: 720px;
+    margin: 0 auto 36px auto;
+  }
+
+  /* ============ TRUST BAND & MARQUEE ============ */
+  .trust {
+    background: var(--dark-bg);
+    padding: 60px 0 80px 0;
+    color: var(--white);
+  }
+
+  .logo-marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    position: relative;
+    padding: 1.5rem 0 3rem 0;
+  }
+
+  .logo-track {
+    display: flex;
+    align-items: center;
+    gap: 4.5rem;
+    width: max-content;
+    animation: scrollLogos 25s linear infinite;
+  }
+
+  .logo-marquee:hover .logo-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Marquee Logos: Blown up, containers removed, pure white color enforced */
+  .brand-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .brand-logo * {
+    color: #ffffff !important;
+  }
+
+  .brand-logo svg {
+    height: 36px;
+    width: auto;
+    stroke: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  .brand-logo-text {
+    color: #ffffff !important;
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.05;
+  }
+
+  .brand-logo-text--flip {
+    transform: rotate(180deg);
+  }
+
+  .ctm-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff !important;
+    color: #ffffff !important;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-transform: lowercase;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 40px;
+  }
+
+  .stat-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    flex-shrink: 0;
+  }
+
+  .stat-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .stat-text {
+    font-size: 15px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+  }
+
+  /* ============ EXPERTISE & SECTIONS ============ */
+  .expertise, .case-studies, .testimonials, .cta {
+    padding: 100px 0;
+  }
+
+  .section-title {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .section-title.center {
+    text-align: center;
+  }
+
+  .section-title.on-dark {
+    color: var(--white);
+  }
+
+  .section-sub {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(13, 40, 30, 0.75);
+    max-width: 680px;
+    margin: 0 auto 50px auto;
+  }
+
+  .section-sub.center {
+    text-align: center;
+  }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .expertise-card {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .expertise-card--green {
+    background: #C4F1DC;
+  }
+
+  .expertise-card--dark {
+    background: var(--dark-bg);
+    color: var(--white);
+  }
+
+  .expertise-media {
+    height: 280px;
+    overflow: hidden;
+  }
+
+  .expertise-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .expertise-foot {
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .expertise-foot h3 {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .arrow-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .expertise-card--dark .arrow-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+  }
+
+  .arrow-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Case Studies */
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .case-card {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+
+  .case-media {
+    height: 320px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .case-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .case-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* Testimonials */
+  .testimonials {
+    background: var(--dark-bg);
+  }
+
+  .testimonial-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 960px;
+    margin: 40px auto 0 auto;
+  }
+
+  .testimonial-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .testimonial-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .testimonial-body h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .testimonial-body p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 32px;
+  }
+
+  .testimonial-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .testimonial-author strong {
+    display: block;
+    color: var(--white);
+    font-size: 16px;
+  }
+
+  .testimonial-author span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+  }
+
+  .testimonial-stars {
+    display: flex;
+    gap: 4px;
+    color: #FFC107;
+    margin-top: 6px;
+  }
+
+  .testimonial-stars svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .testimonial-nav {
+    display: flex;
+    gap: 12px;
+  }
+
+  .nav-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .nav-circle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-circle--active {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  /* CTA */
+  .cta {
+    text-align: center;
+    background: var(--mint-bg);
+  }
+
+  .cta-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .cta-sub {
+    font-size: 18px;
+    color: rgba(13, 40, 30, 0.75);
+    margin-bottom: 36px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    background: var(--dark-bg);
+    padding: 80px 0 60px 0;
+    color: var(--white);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-layout {
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-brand h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 16px 0 12px 0;
+  }
+
+  .footer-brand p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 24px;
+  }
+
+  /* Footer Navigation Grid & Vertical Baseline Alignment */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    align-items: start; /* Top baseline grid alignment */
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+  }
+
+  /* Header Hierarchy & Visibility */
+  .footer-header {
+    font-size: 1.125rem; /* Identical font size */
+    font-weight: 700;    /* Bold weight */
+    color: #ffffff !important; /* Pure white color, completely visible */
+    margin-top: 0;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-links li {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: #ffffff;
+  }
+
+  .footer-contact-info {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+
+  .social-icon:hover {
+    background: var(--green);
+  }
+
+  /* Responsive Rules */
+  @media (max-width: 992px) {
+    .hero-title { font-size: 44px; }
+    .footer-layout { grid-template-columns: 1fr; gap: 40px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .expertise-grid, .case-grid { grid-template-columns: 1fr; }
+    .testimonial-card { grid-template-columns: 1fr; text-align: center; }
+    .testimonial-photo { margin: 0 auto; }
+    .testimonial-foot { flex-direction: column; gap: 20px; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-pills {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 32px;
+      right: 32px;
+      flex-direction: column;
+      background: var(--white);
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .nav-pills.is-open { display: flex; }
+    .nav-toggle { display: block; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
 </head>
 <body>
 
 <!-- ================= HERO ================= -->
 <header class="hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow--tl" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow--br" aria-hidden="true"></div>
+
   <nav class="nav container">
     <a href="#" class="logo">
       <span class="logo-mark"></span>
       <span class="logo-text">TGlobal</span>
     </a>
 
-    <!-- Pill-shaped container for links -->
     <ul class="nav-pills" id="nav-pills">
       <li><a href="#" class="pill pill--active">Home</a></li>
-      <li><a href="#" class="pill">Agency</a></li>
-      <li><a href="#" class="pill">Team</a></li>
+      <li><a href="javascript:void(0)" class="pill">Agency</a></li>
+      <li><a href="javascript:void(0)" class="pill">Team</a></li>
       <li><a href="#services" class="pill">Services</a></li>
       <li><a href="#work" class="pill">Work</a></li>
       <li><a href="#contact" class="pill">Contact</a></li>
@@ -31,39 +776,55 @@
 
     <a href="#contact" class="btn btn--primary nav-cta">Book us</a>
 
-    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu">
-      <svg viewBox="0 0 24 24" fill="none" width="28" height="28"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-pills">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </nav>
 
   <div class="hero-content container">
     <h1 class="hero-title">
-      Innovate, Build,
-      <span class="icon-chip icon-chip--1" aria-hidden="true">
-        <!-- SVG Chip 1 -->
-        <svg width="64" height="64" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="22.79" width="67" height="67" rx="10.4" transform="rotate(19.8 22.79 0)" fill="#B8F3D9"/>
-          <path d="M40.9 31.9L33.3 29.1" stroke="#1CA167" stroke-width="2" stroke-linecap="round"/>
-          <path d="M31.5 48.8L30.1 52.6C29.7 53.8 28.6 54.5 27.5 54.6C26.3 54.5 22.5 53.1 22.5 53.1C20.9 52.5 20.1 50.8 20.7 49.2L22 45.4C22.6 43.8 24.3 43 25.9 43.6L29.7 45C31.3 45.5 32.1 47.3 31.5 48.8Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M58 58.4L56.7 62.2C56.1 63.8 54.4 64.6 52.8 64L49 62.7C48.6 62.5 48.2 62.3 47.9 62C47.1 61.2 46.8 60 47.2 58.8L48.6 55C49.1 53.4 50.8 52.6 52.4 53.2L56.2 54.6C57.8 55.1 58.6 56.9 58 58.4Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M53.2 33.1L51.2 38.8C50.6 40.4 48.9 41.2 47.3 40.6L41.6 38.6C40.1 38 39.3 36.3 39.8 34.7L41.9 29C42.4 27.5 44.2 26.7 45.8 27.2L51.4 29.3C53 29.8 53.8 31.6 53.2 33.1Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <span class="chip-wrap chip-wrap--right">
+        Innovate, Build,
+        <span class="icon-chip icon-chip--1" aria-hidden="true">
+          <svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="22.7931" width="67" height="67" rx="10.4078" transform="rotate(19.8888 22.7931 0)" fill="#B8F3D9"/>
+            <rect x="23.5489" y="1.61272" width="64.4812" height="64.4812" rx="9.14837" transform="rotate(19.8888 23.5489 1.61272)" stroke="#93ECC5" stroke-opacity="0.8" stroke-width="2.5188"/>
+            <path d="M28.1639 31.603C30.2567 32.3601 32.567 31.2773 33.3241 29.1845C34.0812 27.0917 32.9984 24.7814 30.9056 24.0243C28.8129 23.2672 26.5026 24.35 25.7454 26.4428C24.9883 28.5356 26.0711 30.8459 28.1639 31.603Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M62.2679 43.9409C64.3607 44.698 66.671 43.6152 67.4281 41.5224C68.1852 39.4296 67.1024 37.1193 65.0096 36.3622C62.9169 35.6051 60.6066 36.6879 59.8494 38.7807C59.0923 40.8734 60.1751 43.1837 62.2679 43.9409Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M59.8495 38.7807L52.2709 36.0389" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M40.9027 31.9263L33.3241 29.1845" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M31.5493 48.8974L30.1784 52.6867C29.7603 53.8425 28.696 54.593 27.56 54.6534C27.1383 54.6937 26.7251 54.6513 26.3082 54.5006L22.5189 53.1297C20.9463 52.5608 20.1362 50.8321 20.7051 49.2595L22.076 45.4702C22.6449 43.8976 24.3735 43.0874 25.9461 43.6564L29.7354 45.0272C31.308 45.5962 32.1182 47.3248 31.5493 48.8974Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M58.0744 58.4935L56.7035 62.2828C56.1346 63.8554 54.406 64.6656 52.8334 64.0967L49.0441 62.7258C48.6272 62.575 48.2826 62.3432 47.9843 62.0424C47.1499 61.2692 46.8121 60.0114 47.2302 58.8557L48.6011 55.0663C49.17 53.4938 50.8987 52.6836 52.4713 53.2525L56.2606 54.6234C57.8331 55.1923 58.6433 56.9209 58.0744 58.4935Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M53.2989 33.1969L51.2426 38.8809C50.6805 40.4345 48.9261 41.2568 47.3724 40.6947L41.6885 38.6384C40.1348 38.0764 39.3126 36.3219 39.8746 34.7683L41.9309 29.0843C42.493 27.5306 44.2475 26.7084 45.8011 27.2704L51.4851 29.3268C53.0387 29.8888 53.861 31.6433 53.2989 33.1969Z" fill="#B8F3D9" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M51.7704 37.4219C55.4382 41.32 56.7581 47.3256 54.7086 52.9906C54.5921 53.3127 54.4634 53.609 54.309 53.9174" fill="#B8F3D9"/>
+            <path d="M51.7704 37.4219C55.4382 41.32 56.7581 47.3256 54.7086 52.9906C54.5921 53.3127 54.4634 53.609 54.309 53.9174" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M27.8975 44.3624C27.9762 44.0266 28.0669 43.7166 28.1834 43.3945C30.2329 37.7294 35.0896 33.9584 40.4025 33.3093" fill="#B8F3D9"/>
+            <path d="M27.8975 44.3624C27.9762 44.0266 28.0669 43.7166 28.1834 43.3945C30.2329 37.7294 35.0896 33.9584 40.4025 33.3093" stroke="#1CA167" stroke-width="1.95146" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
       </span>
       <br>
-      Scale.
-      <span class="icon-chip icon-chip--2" aria-hidden="true">
-        <!-- SVG Chip 2 -->
-        <svg width="64" height="64" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="22.7" width="67" height="67" rx="10.4" transform="rotate(19.8 22.7 0)" fill="#B8F3D9"/>
-          <path d="M47.8 22.5L52.6 24.2C54.4 24.8 55.1 26.6 54.2 28L52.2 31.2L43.7 28.1L44.2 24.4C44.4 22.8 46.1 21.8 47.8 22.5Z" stroke="#1CA167" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M52.2 31.2L54.4 35.3C55.7 37.6 55.4 38.7 53.2 40L44.8 45.3C43 46.4 41 45.7 40.4 43.7L37.3 34.3C36.5 31.9 36.9 30.7 39.4 29.8L43.7 28.1" stroke="#1CA167" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M36.7 55.5L34.7 56.5C33.5 57 33 58.5 33.6 59.7L34.5 61.7C35.1 62.9 36.5 63.4 37.7 62.9L39.7 61.9C41 61.4 41.5 59.9 40.9 58.7L40 56.7C39.4 55.5 38 55 36.7 55.5Z" stroke="#1CA167" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <span class="chip-wrap chip-wrap--left">
+        <span class="icon-chip icon-chip--2" aria-hidden="true">
+          <svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="22.7944" y="1.37091e-06" width="67" height="67" rx="10.4078" transform="rotate(19.89 22.7944 1.37091e-06)" fill="#B8F3D9"/>
+            <rect x="23.5502" y="1.61274" width="64.4812" height="64.4812" rx="9.14837" transform="rotate(19.89 23.5502 1.61274)" stroke="#93ECC5" stroke-opacity="0.8" stroke-width="2.5188"/>
+            <path d="M47.8973 22.5071L52.6721 24.2346C54.4911 24.8927 55.1998 26.6063 54.2897 28.0555L52.2721 31.204L43.7455 28.119L44.2094 24.4085C44.403 22.8072 46.1919 21.8901 47.8973 22.5071Z" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M52.2653 31.2229L54.4876 35.3269C55.736 37.6214 55.4004 38.7858 53.2764 40.0959L44.8443 45.3378C43.0764 46.4338 41.0868 45.714 40.4294 43.7405L37.3033 34.3169C36.5093 31.9511 36.9412 30.7572 39.4239 29.8769L43.7577 28.1448" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M42.4834 44.9337L44.2178 40.1398" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M36.7889 55.5803L34.7762 56.5235C33.5634 57.0919 33.0425 58.5319 33.6108 59.7446L34.554 61.7573C35.1224 62.9701 36.5624 63.4911 37.7752 62.9227L39.7878 61.9795C41.0006 61.4111 41.5216 59.9711 40.9532 58.7584L40.01 56.7457C39.4417 55.5329 38.0016 55.0119 36.7889 55.5803Z" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M55.6827 52.5163L57.767 53.2704C59.0176 53.7228 60.4109 53.0698 60.8634 51.8192L61.6175 49.735C62.0699 48.4844 61.417 47.0909 60.1664 46.6385L58.0821 45.8844C56.8315 45.4319 55.4381 46.0851 54.9857 47.3356L54.2316 49.4199C53.7791 50.6704 54.4321 52.0638 55.6827 52.5163Z" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M27.4501 42.3018L25.3658 41.5477C24.1152 41.0953 23.4622 39.7019 23.9147 38.4513L24.6688 36.3671C25.1212 35.1165 26.5146 34.4634 27.7652 34.9158L29.8495 35.6699C31.1001 36.1224 31.753 37.5159 31.3006 38.7664L30.5465 40.8507C30.094 42.1012 28.7007 42.7543 27.4501 42.3018Z" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M54.1572 51.343L40.4814 57.7521" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M29.3733 42.3762L35.7824 56.052" stroke="#1CA167" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Scale.
       </span>
     </h1>
 
     <p class="hero-sub">
-      At TGlobal, we provide tailored digital solutions, from web design to SEO and marketing, ensuring your brand thrives. As your strategic partner, we blend creativity with data-driven insights to bring your vision to life.<br><strong>Your success is our priority.</strong>
+      At TGlobal, we provide tailored digital solutions, from web design to SEO and marketing, ensuring your brand thrives. As your strategic partner, we blend creativity with data-driven insights to bring your vision to life. Your success is our priority.
     </p>
 
     <a href="#contact" class="btn btn--primary btn--lg hero-cta">Book a consultation</a>
@@ -75,43 +836,108 @@
   <div class="container">
     <div class="logo-marquee">
       <div class="logo-track">
-        <div class="brand-logo"><span class="brand-logo-text">MIGHTY<br>FURNITURES</span></div>
-        <div class="brand-logo"><span class="brand-logo-text">WALL<br>PAINT<br>SHOP</span></div>
-        <div class="brand-logo"><span class="brand-logo-text">BULLSEYE</span></div>
-        <div class="brand-logo"><span class="brand-logo-text">GOLDEN<br>GOLDEN</span></div>
-        <div class="brand-logo"><span class="brand-logo-text">Ideabox.</span></div>
-        <div class="brand-logo"><span class="brand-logo-text">CLIMB<br>THE<br>MOUNTAIN</span></div>
-        
-        <!-- Duplicates for infinite scroll -->
-        <div class="brand-logo"><span class="brand-logo-text">MIGHTY<br>FURNITURES</span></div>
-        <div class="brand-logo"><span class="brand-logo-text">WALL<br>PAINT<br>SHOP</span></div>
-        <div class="brand-logo"><span class="brand-logo-text">BULLSEYE</span></div>
+        <!-- First Set -->
+        <div class="brand-logo brand-logo--furnitures">
+          <span class="furn-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 14" fill="none"><path d="M2 2h28M2 2v10M30 2v10" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <span class="brand-logo-text">MIGHTY<br>FURNITURES</span>
+        </div>
+
+        <div class="brand-logo brand-logo--boxed">
+          <span class="brand-logo-text">WALL<br>PAINT<br>SHOP</span>
+        </div>
+
+        <div class="brand-logo brand-logo--bullseye">
+          <span class="bullseye-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2.4"/><circle cx="16" cy="16" r="3" fill="currentColor"/></svg>
+          </span>
+          <span class="brand-logo-text">BULLSEYE</span>
+        </div>
+
+        <div class="brand-logo brand-logo--golden">
+          <span class="brand-logo-text brand-logo-text--flip">GOLDEN<br>GOLDEN</span>
+        </div>
+
+        <div class="brand-logo brand-logo--ideabox">
+          <span class="ideabox-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" stroke="currentColor" stroke-width="2"/><path d="M2 30L30 2" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <span class="brand-logo-text">Ideabox.</span>
+        </div>
+
+        <div class="brand-logo brand-logo--ctm">
+          <span class="ctm-badge">ctm</span>
+          <span class="brand-logo-text">CLIMB<br>THE<br>MOUNTAIN</span>
+        </div>
+
+        <!-- Duplicate Set for Infinite Marquee Loop -->
+        <div class="brand-logo brand-logo--furnitures" aria-hidden="true">
+          <span class="furn-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 14" fill="none"><path d="M2 2h28M2 2v10M30 2v10" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <span class="brand-logo-text">MIGHTY<br>FURNITURES</span>
+        </div>
+
+        <div class="brand-logo brand-logo--boxed" aria-hidden="true">
+          <span class="brand-logo-text">WALL<br>PAINT<br>SHOP</span>
+        </div>
+
+        <div class="brand-logo brand-logo--bullseye" aria-hidden="true">
+          <span class="bullseye-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2.4"/><circle cx="16" cy="16" r="3" fill="currentColor"/></svg>
+          </span>
+          <span class="brand-logo-text">BULLSEYE</span>
+        </div>
+
+        <div class="brand-logo brand-logo--golden" aria-hidden="true">
+          <span class="brand-logo-text brand-logo-text--flip">GOLDEN<br>GOLDEN</span>
+        </div>
+
+        <div class="brand-logo brand-logo--ideabox" aria-hidden="true">
+          <span class="ideabox-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" stroke="currentColor" stroke-width="2"/><path d="M2 30L30 2" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <span class="brand-logo-text">Ideabox.</span>
+        </div>
+
+        <div class="brand-logo brand-logo--ctm" aria-hidden="true">
+          <span class="ctm-badge">ctm</span>
+          <span class="brand-logo-text">CLIMB<br>THE<br>MOUNTAIN</span>
+        </div>
       </div>
     </div>
 
-    <!-- 4-Column Green Stats Grid -->
     <div class="stat-grid">
       <div class="stat-card">
-        <span class="stat-icon"><svg viewBox="0 0 24 24" width="32" height="32" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <span class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
         <p class="stat-text">10 Years of<br>market experience</p>
       </div>
       <div class="stat-card">
-        <span class="stat-icon"><svg viewBox="0 0 24 24" width="32" height="32" fill="none"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.4.3.6.8.6 1.3V16h6v-.9c0-.5.2-1 .6-1.3A6 6 0 0 0 12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+        <span class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.4.3.6.8.6 1.3V16h6v-.9c0-.5.2-1 .6-1.3A6 6 0 0 0 12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
         <p class="stat-text">Unique technologies<br>&amp; modern approach</p>
       </div>
       <div class="stat-card">
-        <span class="stat-icon"><svg viewBox="0 0 24 24" width="32" height="32" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2"/><path d="M3 13h18" stroke="currentColor" stroke-width="2"/></svg></span>
+        <span class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/><path d="M3 13h18" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
         <p class="stat-text">100+ successful cases<br>in portfolio</p>
       </div>
       <div class="stat-card">
-        <span class="stat-icon"><svg viewBox="0 0 24 24" width="32" height="32" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="9" r="2.4" stroke="currentColor" stroke-width="2"/><path d="M15.5 19c.2-2.3 1.8-4 4-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <span class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 19c.2-2.3 1.8-4 4-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
         <p class="stat-text">Customer satisfaction<br>is our top priority</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= EXPERTISE (4-Column) ================= -->
+<!-- ================= OUR EXPERTISE ================= -->
 <section class="expertise" id="services">
   <div class="container">
     <h2 class="section-title center">Our Expertise</h2>
@@ -121,23 +947,29 @@
 
     <div class="expertise-grid">
       <article class="expertise-card expertise-card--green">
-        <div class="expertise-media"><img src="assets/web-design.jpg" alt="Web design" /></div>
+        <div class="expertise-media">
+          <img src="assets/web-design.jpg" alt="Web design and development preview" />
+        </div>
         <div class="expertise-foot">
-          <h3>Web design and<br>development</h3>
+          <h3>Web design and development</h3>
           <span class="arrow-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </article>
 
       <article class="expertise-card expertise-card--dark">
-        <div class="expertise-media"><img src="assets/app-design.jpg" alt="App design" /></div>
+        <div class="expertise-media">
+          <img src="assets/app-design.jpg" alt="App design and development preview" />
+        </div>
         <div class="expertise-foot">
-          <h3>App design and<br>development</h3>
+          <h3>App design and development</h3>
           <span class="arrow-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </article>
 
       <article class="expertise-card expertise-card--green">
-        <div class="expertise-media"><img src="assets/ecommerce.jpg" alt="E-Commerce" /></div>
+        <div class="expertise-media">
+          <img src="assets/ecommerce.jpg" alt="E-Commerce preview" />
+        </div>
         <div class="expertise-foot">
           <h3>E-Commerce</h3>
           <span class="arrow-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -145,9 +977,11 @@
       </article>
 
       <article class="expertise-card expertise-card--dark">
-        <div class="expertise-media"><img src="assets/branding.jpg" alt="Branding" /></div>
+        <div class="expertise-media">
+          <img src="assets/branding.jpg" alt="Branding and creative service preview" />
+        </div>
         <div class="expertise-foot">
-          <h3>Branding and<br>creative service</h3>
+          <h3>Branding and creative service</h3>
           <span class="arrow-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </article>
@@ -162,22 +996,22 @@
 
     <div class="case-grid">
       <article class="case-card">
-        <div class="case-media"><img src="assets/case-saas.jpg" alt="SaaS" /></div>
+        <div class="case-media"><img src="assets/case-saas.jpg" alt="SaaS landing page case study" /></div>
         <h3 class="case-title">SaaS landing page</h3>
       </article>
 
       <article class="case-card">
-        <div class="case-media"><img src="assets/case-finance.jpg" alt="Finance" /></div>
+        <div class="case-media"><img src="assets/case-finance.jpg" alt="Finance mobile app case study" /></div>
         <h3 class="case-title">Finance mobile app</h3>
       </article>
 
       <article class="case-card">
-        <div class="case-media"><img src="assets/case-education.jpg" alt="Education" /></div>
+        <div class="case-media"><img src="assets/case-education.jpg" alt="Education mobile app case study" /></div>
         <h3 class="case-title">Education mobile app</h3>
       </article>
 
       <article class="case-card">
-        <div class="case-media"><img src="assets/case-task.jpg" alt="Task" /></div>
+        <div class="case-media"><img src="assets/case-task.jpg" alt="Task management website case study" /></div>
         <h3 class="case-title">Task management website</h3>
       </article>
     </div>
@@ -187,7 +1021,7 @@
 <!-- ================= TESTIMONIALS ================= -->
 <section class="testimonials">
   <div class="container">
-    <h2 class="section-title center">What clients say about our work</h2>
+    <h2 class="section-title center on-dark">What clients say about our work</h2>
 
     <div class="testimonial-card">
       <div class="testimonial-photo">
@@ -199,9 +1033,11 @@
 
         <div class="testimonial-foot">
           <div class="testimonial-meta">
-            <strong>Alexander Black</strong>
-            <span>Seven consulting - CEO</span>
-            <div class="testimonial-stars">
+            <div class="testimonial-author">
+              <strong>Alexander Black</strong>
+              <span>Seven consulting - CEO</span>
+            </div>
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
               <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
               <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
               <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
@@ -209,9 +1045,14 @@
               <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
             </div>
           </div>
+
           <div class="testimonial-nav">
-            <button class="nav-circle"><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-            <button class="nav-circle nav-circle--active"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <button class="nav-circle" aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="nav-circle nav-circle--active" aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
         </div>
       </div>
@@ -224,13 +1065,13 @@
   <div class="container">
     <h2 class="cta-title">Let&rsquo;s Build Together</h2>
     <p class="cta-sub">Got a project in mind? Let&apos;s create something amazing together.</p>
-    <a href="#" class="btn btn--primary btn--lg">Book a consultation</a>
+    <a href="mailto:thankgod@tactologyglobal.com" class="btn btn--primary btn--lg">Book a consultation</a>
   </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
-  <div class="container footer-grid-wrapper">
+  <div class="container footer-layout">
     <div class="footer-brand">
       <span class="logo-mark logo-mark--lg"></span>
       <h3>Tactology Global</h3>
@@ -238,7 +1079,9 @@
       <a href="#contact" class="btn btn--primary">Request for quote</a>
     </div>
 
-    <div class="footer-links-grid">
+    <!-- Footer Navigation Grid -->
+    <div class="footer-grid">
+      <!-- Column 1: Home Header -->
       <div class="footer-column">
         <div class="footer-header">Home</div>
         <ul class="footer-links">
@@ -250,6 +1093,8 @@
           <li><a href="#">Contact</a></li>
         </ul>
       </div>
+
+      <!-- Column 2: Services Header -->
       <div class="footer-column">
         <div class="footer-header">Services</div>
         <ul class="footer-links">
@@ -259,6 +1104,8 @@
           <li><a href="#">E-Commerce</a></li>
         </ul>
       </div>
+
+      <!-- Column 3: Get in touch Header -->
       <div class="footer-column">
         <div class="footer-header">Get in touch</div>
         <ul class="footer-links">
@@ -266,12 +1113,40 @@
           <li class="footer-contact-info">thankgod@tactologyglobal.com</li>
         </ul>
         <div class="social-links">
-          <a href="#" class="social-icon">IN</a>
-          <a href="#" class="social-icon">WA</a>
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.7a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26Z"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Phone">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+  (function(){
+    var toggle = document.getElementById('nav-toggle');
+    var pills = document.getElementById('nav-pills');
+    if(!toggle || !pills) return;
+    toggle.addEventListener('click', function(){
+      var open = pills.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    pills.addEventListener('click', function(e){
+      if(e.target.closest('a')){
+        pills.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+    document.addEventListener('click', function(e){
+      if(!pills.contains(e.target) && !toggle.contains(e.target)){
+        pills.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+  })();
+</script>
 </body>
 </html>
