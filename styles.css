@@ -895,4 +895,54 @@ ul {
   .nav-cta {
     display: none;
   }
+/* ================= HERO FLOATING ICONS ================= */
+
+.hero-title {
+  position: relative;
+}
+
+.hero-icon {
+  position: absolute;
+  width: 86px;
+  height: 86px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Icon beside "Innovate, Build," */
+.hero-icon-1 {
+  left: 14%;
+  top: 35%;
+}
+
+/* Icon above/right of "Build," */
+.hero-icon-2 {
+  right: 5%;
+  top: -12%;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 767px) {
+  .hero-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .hero-icon-1 {
+    left: 3%;
+    top: 38%;
+  }
+
+  .hero-icon-2 {
+    right: 2%;
+    top: -8%;
+  }
+}
 }
