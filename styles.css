@@ -238,62 +238,58 @@ ul {
 .hero-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 96px;
-  line-height: 1.04;
+  font-size: 112px;
+  line-height: 1.12;
   letter-spacing: -0.02em;
   color: var(--ink);
+  /* stack the two lines and shrink each one to its text width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.chip-wrap {
+/* Each line is its own positioning box, so icons follow the TEXT,
+   not the full-width heading. Offsets are in em, so they scale with the font. */
+.hero-line {
   position: relative;
   display: inline-block;
 }
 
-.icon-chip {
+.hero-icon {
   position: absolute;
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  background: var(--mint-chip);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--green);
-  box-shadow: 0 12px 24px rgba(28,162,103,.18);
+  width: 0.76em;
+  height: 0.76em;
+  pointer-events: none;
 }
 
-.icon-chip svg {
-  width: 28px;
-  height: 28px;
+.hero-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.icon-chip--1 {
-  top: -44px;
-  right: -72px;
-  transform: rotate(14deg);
+/* Figma: bottom-left, overlapping the "In" of Innovate and dipping into line 2 */
+.hero-icon--left {
+  left: 0.22em;
+  top: 0.84em;
 }
 
-.icon-chip--2 {
-  position: relative;
-  top: -6px;
-  margin-right: 8px;
-  width: 58px;
-  height: 58px;
-  transform: rotate(-12deg);
-  display: inline-flex;
-  vertical-align: middle;
+/* Figma: top-right, just past the comma after "Build" */
+.hero-icon--right {
+  right: -0.64em;
+  top: 0.06em;
 }
 
 .hero-sub {
-  max-width: 700px;
-  margin: 40px auto 0;
-  font-size: 17px;
-  line-height: 1.65;
-  color: var(--grey-text);
+  max-width: 1010px;
+  margin: 12px auto 0;
+  font-size: 18px;
+  line-height: 1.95;
+  color: var(--ink);
 }
 
 .hero-cta {
-  margin-top: 40px;
+  margin-top: 32px;
 }
 
 /* ============ TRUST + STATS ============ */
@@ -302,21 +298,48 @@ ul {
   padding: 56px 0 64px;
 }
 
-.logo-row {
+/* Viewport: hides overflow and fades the edges */
+.logo-marquee {
+  overflow: hidden;
+  padding-bottom: 56px;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/* Track: all logos on ONE line, then slide left by exactly half (= one full set) */
+.logo-track {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 32px;
-  padding-bottom: 56px;
+  flex-wrap: nowrap;
+  width: max-content;
   color: #E7F3EC;
   opacity: .92;
+  animation: logo-scroll 28s linear infinite;
+}
+
+.logo-marquee:hover .logo-track {
+  animation-play-state: paused;
+}
+
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Respect users who turn off motion: no animation, swipe instead */
+@media (prefers-reduced-motion: reduce) {
+  .logo-track { animation: none; }
+  .logo-marquee { overflow-x: auto; }
 }
 
 .brand-logo {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  /* spacing lives on each item (not flex gap) so the -50% loop is seamless */
+  margin-right: 96px;
 }
 
 .brand-logo-text {
@@ -778,10 +801,16 @@ ul {
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1080px) {
   .hero-title {
-    font-size: 72px;
+    font-size: 80px;
   }
   .nav-pills {
     display: none;
+  }
+  .nav {
+    gap: 8px;
+  }
+  .nav-cta {
+    margin-left: auto; /* push "Book us" + menu button to the right */
   }
   .nav-pills.is-open {
     display: flex;
@@ -840,34 +869,38 @@ ul {
     padding-top: 48px;
   }
   .hero-title {
-    font-size: 44px;
+    font-size: clamp(30px, 9.6vw, 40px);
+    line-height: 1.2;
   }
-  .icon-chip--1 {
-    width: 46px;
-    height: 46px;
-    top: -30px;
-    right: -12px;
+  /* Figma mobile: icons are bigger relative to the text */
+  .hero-icon {
+    width: 1.05em;
+    height: 1.05em;
   }
-  .icon-chip--1 svg {
-    width: 22px;
-    height: 22px;
+  .hero-icon--left {
+    left: 0.12em;
+    top: 0.9em;
   }
-  .icon-chip--2 {
-    width: 42px;
-    height: 42px;
-  }
-  .icon-chip--2 svg {
-    width: 20px;
-    height: 20px;
+  .hero-icon--right {
+    right: -0.95em;
+    top: -0.05em;
   }
   .hero-sub {
-    font-size: 15px;
-    margin-top: 28px;
+    font-size: 13px;
+    line-height: 1.75;
+    margin-top: 8px;
   }
-  .logo-row {
-    justify-content: center;
-    gap: 28px;
+  .hero-cta {
+    margin-top: 20px;
+  }
+  .logo-marquee {
     padding-bottom: 40px;
+  }
+  .brand-logo {
+    margin-right: 40px;
+  }
+  .logo-track {
+    animation-duration: 20s;
   }
   .stat-grid {
     grid-template-columns: 1fr;
@@ -892,57 +925,13 @@ ul {
     grid-template-columns: 1fr;
     gap: 36px;
   }
+  /* Figma mobile keeps a small "Book us" next to the menu button */
   .nav-cta {
-    display: none;
+    font-size: 12px;
+    padding: 8px 15px;
   }
-/* ================= HERO FLOATING ICONS ================= */
-
-.hero-title {
-  position: relative;
-}
-
-.hero-icon {
-  position: absolute;
-  width: 86px;
-  height: 86px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.hero-icon svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* Icon beside "Innovate, Build," */
-.hero-icon-1 {
-  left: 14%;
-  top: 35%;
-}
-
-/* Icon above/right of "Build," */
-.hero-icon-2 {
-  right: 5%;
-  top: -12%;
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 767px) {
-  .hero-icon {
-    width: 60px;
-    height: 60px;
+  .nav-toggle {
+    width: 38px;
+    height: 38px;
   }
-
-  .hero-icon-1 {
-    left: 3%;
-    top: 38%;
-  }
-
-  .hero-icon-2 {
-    right: 2%;
-    top: -8%;
-  }
-}
 }
